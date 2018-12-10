@@ -1,0 +1,16 @@
+schema {
+  query: Query
+}
+
+type Query {
+  allStudents: [Student]
+  student(studentId: String): Student
+}
+
+type Student {
+  studentId: String
+  firstName: String
+  lastName: String
+  enrollDate: String
+  courses: [String]
+}

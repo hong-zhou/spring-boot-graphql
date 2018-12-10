@@ -1,0 +1,145 @@
+Using Postman to request: localhost:8080/api/students
+
+RequestBody (text):
+query {
+  allStudents {
+    studentId
+    firstName
+    lastName
+    enrollDate
+    courses
+  }
+}
+
+Response:
+{
+    "data": {
+        "allStudents": [
+            {
+                "studentId": "1",
+                "firstName": "Hong",
+                "lastName": "Zhou",
+                "enrollDate": "2018-11-14",
+                "courses": [
+                    "Physics",
+                    "English",
+                    "Arts"
+                ]
+            },
+            {
+                "studentId": "2",
+                "firstName": "Martin",
+                "lastName": "John",
+                "enrollDate": "2018-11-14",
+                "courses": [
+                    "Biology",
+                    "English",
+                    "Arts"
+                ]
+            },
+            {
+                "studentId": "3",
+                "firstName": "Henry",
+                "lastName": "Fort",
+                "enrollDate": "2018-11-14",
+                "courses": [
+                    "English",
+                    "Arts"
+                ]
+            }
+        ]
+    },
+    "errors": [],
+    "dataPresent": true,
+    "extensions": null
+}
+**************************************************************
+
+query {
+  student(studentId: "1") {
+    studentId
+    firstName
+    lastName
+    enrollDate
+    courses
+  }
+}
+Response:
+{
+    "data": {
+        "student": {
+            "studentId": "1",
+            "firstName": "Hong",
+            "lastName": "Zhou",
+            "enrollDate": "2018-11-14",
+            "courses": [
+                "Physics",
+                "English",
+                "Arts"
+            ]
+        }
+    },
+    "errors": [],
+    "dataPresent": true,
+    "extensions": null
+}
+*******************************************************
+
+query {
+  allStudents {
+    studentId
+    courses
+  }
+  student(studentId: "2") {
+    studentId
+    firstName
+    lastName
+    enrollDate
+    courses
+  }
+}
+
+Response:
+{
+    "data": {
+        "allStudents": [
+            {
+                "studentId": "1",
+                "courses": [
+                    "Physics",
+                    "English",
+                    "Arts"
+                ]
+            },
+            {
+                "studentId": "2",
+                "courses": [
+                    "Biology",
+                    "English",
+                    "Arts"
+                ]
+            },
+            {
+                "studentId": "3",
+                "courses": [
+                    "English",
+                    "Arts"
+                ]
+            }
+        ],
+        "student": {
+            "studentId": "2",
+            "firstName": "Martin",
+            "lastName": "John",
+            "enrollDate": "2018-11-14",
+            "courses": [
+                "Biology",
+                "English",
+                "Arts"
+            ]
+        }
+    },
+    "errors": [],
+    "dataPresent": true,
+    "extensions": null
+}
